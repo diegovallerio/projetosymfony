@@ -21,21 +21,16 @@ class Oportunidade
 
     /**
      * @var String
-     * @Serializer\Type ("string")
      */
     private $descricao;
 
     /**
      * @var \DateTime
-     * @Serializer\SerializedName("periodoinicial")
-     * @Serializer\Type ("DateTime<'d/m/y'>")
      */
     private $periodoinicial;
 
     /**
      * @var \DateTime
-     * @Serializer\SerializedName("periodofinal")
-     * @Serializer\Type ("DateTime<'d/m/y'>")
      */
     private $periodofinal;
 

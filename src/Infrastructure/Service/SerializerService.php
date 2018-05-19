@@ -28,10 +28,13 @@ class SerializerService
     }
 
     public function converter ($json, $tipo){
+        return $this ->serializer->deserialize($json, $tipo,  'json');
+
+/*
         try{
             return $this ->serializer->deserialize($json, $tipo,  'json');
         }catch (\Exception $exception){
             dump($exception->getMessage()); die;
-        }
+        }*/
     }
 }

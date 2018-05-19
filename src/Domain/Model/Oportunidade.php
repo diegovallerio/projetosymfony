@@ -20,7 +20,7 @@ class Oportunidade
     private $idOportunidade;
 
     /**
-     * @var String
+     * @var string
      */
     private $descricao;
 
@@ -36,7 +36,7 @@ class Oportunidade
 
     /**
      * Oportunidade constructor.
-     * @param String $descricao
+     * @param string $descricao
      * @param \DateTime $periodoinicial
      * @param \DateTime $periodofinal
      */
@@ -51,7 +51,7 @@ class Oportunidade
     }
 
     /**
-     * @return String
+     * @return string
      */
     public function getDescricao()
     {

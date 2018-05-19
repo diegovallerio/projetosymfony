@@ -8,10 +8,6 @@
 
 namespace Domain\Model;
 
-
-use JMS\Serializer\Annotation as Serializer;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
-
 class Oportunidade
 {
     /**
@@ -35,19 +31,24 @@ class Oportunidade
     private $periodofinal;
 
     /**
+     * @var int
+     */
+    private $qtdVagas;
+
+    /**
      * Oportunidade constructor.
      * @param string $descricao
-     * @param \DateTime $periodoinicial
-     * @param \DateTime $periodofinal
+     * @param \DateTime $periodoInicial
+     * @param \DateTime $periodoFinal
      */
     public function __construct(
         string $descricao,
         \DateTime $periodoinicial,
-        \DateTime $periodofinal)
-    {
+        \DateTime $periodofinal
+    ) {
         $this->descricao = $descricao;
-        $this->periodoinicial = $periodoinicial;
-        $this->periodofinal = $periodofinal;
+        $this->periodoInicial = $periodoinicial;
+        $this->periodoFinal = $periodofinal;
     }
 
     /**
@@ -73,6 +74,4 @@ class Oportunidade
     {
         return $this->periodofinal;
     }
-
-
 }

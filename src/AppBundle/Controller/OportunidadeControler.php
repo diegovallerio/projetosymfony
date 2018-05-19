@@ -22,15 +22,16 @@ class OportunidadeControler extends Controller
      * @Method("POST")
      * @param Request $request
      */
-    public function salvarAction (Request $request) {
+    public function salvarAction (Request $request)
+    {
         $serializerService = $this->get('infra.serializer.service');
+        $OportunidadeService = $this->get('app.oportunidade.service');
         try {
             $oportunidade = $serializerService->converter($request->getContent(), Oportunidade::class);
-            dump($oportunidade); die;
-        } catch (Exception $exc) {
-            dump($exc->getTraceAsString());
+            $OportunidadeService = $OportunidadeService->salvar($oportunidade);
+        } catch (\Exception $exception) {
+            dump($exception->getMessage());
             die;
     }
 
     }
-}

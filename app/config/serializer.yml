@@ -1,11 +1,12 @@
 jms_serializer:
     handlers:
         datetime:
-            default_format: 'dd/mm/y'
+            default_format: 'd/m/Y'
             default_timezone: 'UTC'
-    metadate:
+    metadata:
         auto_detection: true
         directories:
             DomainModel:
                 namespace_prefix: Domain\Model
-                path: '%Kernel.root_dir%/Resources/infrastructure/serializer/jms'
+                path: '%kernel.root_dir%/Resources/infrastructure/serializer/jms'
+

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping">
+    <entity repository-class="Infrastructure\Persistence\Doctrine\CandidatoRepository"
+            name="Domain\Model\Candidato"
+            table="Candidato">
+        <id name="idCandidato" type="integer">
+            <generator strategy="AUTO"/>
+        </id>
+
+        <field name="nome" type="string" column="nome" />
+        <field name="email" type="string" column="email" />
+        <field name="curriculo" type="string" column="curriculo" />
+        <field name="telefone" type="string" column="telefone" />
+
+        <many-to-many target-entity="Domain\Model\HabilidadeTecnica" field="habilidadesTecnicas">
+            <cascade>
+                <cascade-persist/>
+            </cascade>
+            <join-table name="habilidade_tecnica">
+                <join-columns>
+                    <join-column name="idCandidato" referenced-column-name="id"/>
+                </join-columns>
+                <inverse-join-columns>
+                    <join-column name="idHabilidadeTecnica" referenced-column-name="id"/>
+                </inverse-join-columns>
+            </join-table>
+        </many-to-many>
+    </entity>
+</doctrine-mapping>

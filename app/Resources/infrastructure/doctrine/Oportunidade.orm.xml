@@ -4,7 +4,7 @@
             name="Domain\Model\Oportunidade"
             table="oportunidade">
         <id name="idOportunidade" type="integer">
-            <generator strategy="IDENTITY"/>
+            <generator strategy="AUTO"/>
         </id>
 
         <field name="descricao" type="string" column="descricao" />

@@ -28,10 +28,10 @@ class OportunidadeControler extends Controller
         $OportunidadeService = $this->get('app.oportunidade.service');
         try {
             $oportunidade = $serializerService->converter($request->getContent(), Oportunidade::class);
-            $OportunidadeService = $OportunidadeService->salvar($oportunidade);
+            $OportunidadeService ->salvar($oportunidade);
         } catch (\Exception $exception) {
-            dump($exception->getMessage());
-            die;
+            dump($exception->getMessage()); die;
     }
-
+        var_dump($oportunidade);die;
     }
+}

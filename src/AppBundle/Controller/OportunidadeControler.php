@@ -12,6 +12,7 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Domain\Model\Oportunidade;
 
@@ -30,8 +31,24 @@ class OportunidadeControler extends Controller
             $oportunidade = $serializerService->converter($request->getContent(), Oportunidade::class);
             $OportunidadeService ->salvar($oportunidade);
         } catch (\Exception $exception) {
-            dump($exception->getMessage()); die;
+           return new Response($exception->getMessage(),  400);
     }
-        var_dump($oportunidade);die;
+        return new Response("Operação concluida com sucesso.");
+    }
+
+    /**
+     * @Route ("/oportunidade/listarTudo")
+     */
+    public function getOportunidadesAction(){
+        $oportunidadeService = $this->get('app.oportunidade.service');
+        $serializerService = $this->get('infra.serializer.service');
+        try{
+            $oportunidades = $oportunidadeService->listarTudo();
+          //  dump($oportunidades);die;
+        }catch (\Exception $exception){
+            return new Response($exception->getMessage(),400);
+        }
+
+        return new Response($serializerService->toJsonByGroups($oportunidades));
     }
 }
